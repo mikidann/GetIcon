@@ -1,8 +1,34 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="UTF-8">
+    <title>Favicon 抓取器</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; background: #f4f4f9; }
+        .card { background: white; display: inline-block; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        input { padding: 10px; width: 200px; border: 1px solid #ddd; border-radius: 6px; }
+        button { padding: 10px 20px; background: #4285f4; color: white; border: none; border-radius: 6px; cursor: pointer; }
+        #ico { margin-top: 20px; width: 64px; height: 64px; border: 1px solid #eee; padding: 5px; border-radius: 8px; }
+    </style>
+</head>
 <body>
-    <input id="url" value="google.com">
-    <button onclick="document.getElementById('ico').src='https://google.com">获取图标</button>
-    <br><img id="ico">
+    <div class="card">
+        <h3>🌐 网站图标抓取</h3>
+        <!-- 输入域名如: github.com -->
+        <input id="url" value="github.com" placeholder="输入域名 (如 github.com)">
+        <button onclick="getIcon()">获取图标</button>
+        <br>
+        <img id="ico" src="https://google.com">
+    </div>
+
+    <script>
+        function getIcon() {
+            const domain = document.getElementById('url').value.trim();
+            if (!domain) return;
+            // 使用 Google 的 Favicon 服务 API
+            const iconUrl = `https://google.com{domain}`;
+            document.getElementById('ico').src = iconUrl;
+        }
+    </script>
 </body>
 </html>
